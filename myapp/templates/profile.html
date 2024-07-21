@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: CadetBlue;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: Gainsboro;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+        .link {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" >
+    <h2 style="text-align:center">Your Profile</h2>
+    <p><strong>Username:</strong> {{ username }}</p>
+    <p><strong>Email:</strong> {{ email }}</p>
+    <p><strong>Date Joined:</strong> {{ date_joined }}</p>
+    <p><strong>Last Updated:</strong> {{ last_login }}</p>
+    <div class="link">
+    <a href="{% url 'dashboard' %}">Back to Dashboard</a> |
+    <a href="{% url 'login' %}">Logout</a>
+    </div>
+    </div>
+</body>
+</html>

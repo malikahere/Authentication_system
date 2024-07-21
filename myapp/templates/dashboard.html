@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: CadetBlue;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: Gainsboro;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+        .link {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" >
+    <h1 style="text-align: center;"><b> Hi {{ username }} 👋</b></h1>
+    <h2 style="text-align: center;">Welcome to your Dashboard !</h2>
+    <h4 style="text-align: center;">Navigate through quick links </h4>
+        <div class="link">
+        <p><a href="{% url 'profile' %}">Profile Page</a></p>
+        <p><a href="{% url 'change_password' %}">Change Password</a></p>
+       </div>
+       <button type="submit"><a href="{% url 'login' %}">Logout</a></button>
+</div>
+</body>
+</html>
