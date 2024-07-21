@@ -58,13 +58,17 @@ def forgot_password_view(request):
         form = PasswordResetRequestForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
+            # all the users with same e-mail are ordered as per their activity status
             users = User.objects.filter(email=email).order_by('-last_login')
             
             if users.exists():
+                 # picks the most active user among all the users with same e-mail 
                 user = users.first()
                 subject = 'Password Reset Request'
                 domain = get_current_site(request).domain
+                # a URL-safe base64-encoded representation of the user's primary key
                 uid = urlsafe_base64_encode(force_bytes(user.pk))
+                # a token generated using the default_token_generator
                 token = default_token_generator.make_token(user)
                 protocol = 'https' if request.is_secure() else 'http'
                 reset_link = f"{protocol}://{domain}/reset/{uid}/{token}/"
